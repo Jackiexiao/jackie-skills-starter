@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jackie 推荐 Skills 清单</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #121a33;
+      --text: #eaf0ff;
+      --muted: #9fb1d9;
+      --acc: #7c9cff;
+      --good: #39d98a;
+      --border: #243056;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(1200px 600px at 80% -10%, #223a8a55, transparent), var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 16px 64px; }
+    h1 { margin: 0 0 8px; font-size: clamp(28px, 4vw, 42px); line-height: 1.15; }
+    .lead { color: var(--muted); margin: 0 0 20px; }
+    .install {
+      background: #0f1530;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 18px;
+      overflow: auto;
+    }
+    code { color: #c8d6ff; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin: 16px 0 22px;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #0f1530;
+      color: var(--text);
+      font-size: 14px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .card {
+      background: linear-gradient(180deg, #121a33, #10162d);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      color: #b8c8ff;
+      border: 1px solid #3a4a79;
+      border-radius: 999px;
+      padding: 2px 8px;
+      margin-bottom: 8px;
+    }
+    .skill { font-weight: 700; margin-bottom: 4px; }
+    .usage { color: var(--muted); font-size: 13px; }
+    .example {
+      margin-top: 8px;
+      color: #c7d4ff;
+      font-size: 12px;
+      border-left: 2px solid #3d57a8;
+      padding-left: 8px;
+    }
+    .footer { margin-top: 26px; color: var(--muted); font-size: 13px; }
+    .ok { color: var(--good); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>🔥 Jackie 推荐 Skills 清单</h1>
+    <p class="lead">懒人版：选一个分类，一行命令安装，马上能用。共 <span class="ok">49</span> 个精选 skill。</p>
+
+    <div class="install"><code>npx skills add Jackiexiao/jackie-skills-&lt;dev|marketing|creator|everyday&gt; --all</code></div>
+
+    <div class="toolbar">
+      <input id="q" placeholder="搜索 skill 名称 / 用法（例如：seo、pdf、react）" />
+      <select id="cat">
+        <option value="all">全部分类</option>
+        <option value="Dev">Dev（开发）</option>
+        <option value="Marketing">Marketing（营销）</option>
+        <option value="Creator">Creator（创作）</option>
+        <option value="Everyday">Everyday（日常）</option>
+      </select>
+    </div>
+
+    <section id="list" class="grid"></section>
+
+    <p class="footer">安装后管理：<code>npx skills ls</code> 查看已安装；<code>npx skills remove &lt;skill-name&gt;</code> 删除不需要的 skill。</p>
+  </main>
+
+  <script>
+    const skills = [
+      ["Dev","frontend-design","快速生成高质量前端页面","做一个 SaaS 定价页，暗色风格，移动端优先"],
+      ["Dev","vercel-react-best-practices","React 性能优化","重构列表页减少重复渲染"],
+      ["Dev","next-best-practices","Next.js 最佳实践","优化 Server/Client 组件边界"],
+      ["Dev","vercel-composition-patterns","组件组合模式","把大组件拆成 compound components"],
+      ["Dev","supabase-postgres-best-practices","数据库查询与索引优化","为慢查询设计索引"],
+      ["Dev","systematic-debugging","系统化排查 bug","接口偶发 500，定位根因"],
+      ["Dev","test-driven-development","先测后写","先写失败测试再实现功能"],
+      ["Dev","webapp-testing","Web 自动化测试","测试注册到支付全链路"],
+      ["Dev","requesting-code-review","高质量评审请求","生成 PR 风险点说明"],
+      ["Dev","receiving-code-review","处理评审意见","判断哪些建议该改"],
+      ["Dev","verification-before-completion","完成前验证","输出上线前核对清单"],
+      ["Dev","using-git-worktrees","并行开发隔离","为 bug 建独立 worktree"],
+      ["Dev","subagent-driven-development","多 agent 并行开发","拆分支付重构子任务"],
+      ["Dev","mcp-builder","连接外部 API","把 CRM API 封装成 MCP"],
+
+      ["Marketing","audit-website","网站体检","输出影响优先级 TOP10"],
+      ["Marketing","seo-audit","SEO 诊断","分析页面不排名原因"],
+      ["Marketing","programmatic-seo","规模化 SEO","设计城市+行业模板"],
+      ["Marketing","copywriting","转化文案","重写首屏和 CTA"],
+      ["Marketing","copy-editing","文案润色","把文案更短更有行动力"],
+      ["Marketing","content-strategy","内容规划","做 30 天选题日历"],
+      ["Marketing","marketing-ideas","增长点子","给 20 个低预算动作"],
+      ["Marketing","marketing-psychology","心理学驱动转化","重写价格页触发机制"],
+      ["Marketing","product-marketing-context","定位与卖点整理","梳理人群/痛点/差异化"],
+      ["Marketing","pricing-strategy","定价与套餐","设计 3 档 SaaS 套餐"],
+      ["Marketing","page-cro","页面转化优化","给 5 个可 A/B 的改动"],
+      ["Marketing","launch-strategy","发布节奏","做 14 天上线计划"],
+      ["Marketing","analytics-tracking","埋点与漏斗","搭建注册到付费追踪"],
+      ["Marketing","schema-markup","结构化数据","生成 JSON-LD schema"],
+
+      ["Creator","social-content","按平台生成内容","同主题写小红书/X/公众号版本"],
+      ["Creator","copywriting","标题与开头优化","写 10 个高点击标题"],
+      ["Creator","copy-editing","提升可读性","润色口播稿更自然"],
+      ["Creator","canvas-design","海报与封面","做 AI 提效清单封面"],
+      ["Creator","remotion-best-practices","视频脚本与动画","设计 60 秒分镜"],
+      ["Creator","ui-ux-pro-max","视觉交互升级","优化个人主页层次"],
+      ["Creator","algorithmic-art","创意视觉素材","生成统一风格背景图"],
+      ["Creator","web-design-guidelines","网页设计规范","去掉廉价 AI 感"],
+      ["Creator","tailwind-design-system","Tailwind 设计系统","统一按钮卡片表单规范"],
+
+      ["Everyday","pdf","PDF 全流程处理","合并 3 份文件并提目录"],
+      ["Everyday","docx","Word 报告生成","会议纪要转周报"],
+      ["Everyday","xlsx","表格清洗分析","按地区汇总并画图"],
+      ["Everyday","pptx","快速做演示","生成 10 页汇报大纲"],
+      ["Everyday","agent-browser","浏览器自动化","登录后抓取订单列表"],
+      ["Everyday","browser-use","网页流程执行","自动填表并截图"],
+      ["Everyday","writing-plans","计划拆解","生成两周执行计划"],
+      ["Everyday","brainstorming","发散思路","给 30 个副业方向"],
+      ["Everyday","find-skills","按需求找技能","我想做播客剪辑该装啥"],
+      ["Everyday","using-superpowers","固定高效流程","分析→执行→验证"],
+      ["Everyday","executing-plans","按计划推进","拆成今天先做 5 步"],
+      ["Everyday","skill-creator","封装个人经验","把日报流程做成 skill"]
+    ];
+
+    const q = document.getElementById('q');
+    const cat = document.getElementById('cat');
+    const list = document.getElementById('list');
+
+    function render() {
+      const kw = q.value.trim().toLowerCase();
+      const c = cat.value;
+      const filtered = skills.filter(([category, name, usage, ex]) => {
+        const hitCat = c === 'all' || category === c;
+        const hitKw = !kw || `${name} ${usage} ${ex}`.toLowerCase().includes(kw);
+        return hitCat && hitKw;
+      });
+
+      list.innerHTML = filtered.map(([category, name, usage, ex]) => `
+        <article class="card">
+          <div class="badge">${category}</div>
+          <div class="skill">${name}</div>
+          <div class="usage">${usage}</div>
+          <div class="example">示例：${ex}</div>
+        </article>
+      `).join('');
+    }
+
+    q.addEventListener('input', render);
+    cat.addEventListener('change', render);
+    render();
+  </script>
+</body>
+</html>
