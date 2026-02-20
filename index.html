@@ -28,11 +28,15 @@
   <div id="toast" class="toast">复制成功</div>
   <main class="wrap">
     <h1>Jackie 推荐 Skills</h1>
-    <p class="sub">一行命令安装全部推荐，复制即用。</p>
+    <p class="sub">超小白指南：①点“复制” ②把命令发给你的 AI（或在终端粘贴）③回车执行。</p>
 
     <div class="row">
       <code id="allCmd">npx skills add Jackiexiao/jackie-skills-starter --all</code>
       <button class="primary" onclick="copy('allCmd')">复制</button>
+    </div>
+    <div class="meta" style="margin-top:8px">
+      如果你知道终端：打开终端粘贴执行。<br/>
+      如果你不知道终端：直接把这条命令发给 AI，并说「请代我执行」。
     </div>
 
     <div class="tabs" id="tabs"></div>
@@ -51,6 +55,8 @@
     </section>
 
     <section class="maintain">
+      <div style="margin-bottom:8px;font-weight:600">不会开终端？也没关系</div>
+      <div class="meta" style="margin:0 0 8px 0">你可以把已复制的命令直接发给 AI，并说：<code>请你代我执行这条命令</code>。<br/>例如：Claude Code / Codex / Trae / OpenClaw 都可以代执行。</div>
       <div style="margin-bottom:8px;font-weight:600">后续维护</div>
       <div class="row" style="margin-bottom:8px">
         <code id="lsCmd">npx skills ls</code><button onclick="copy('lsCmd')">复制</button>
