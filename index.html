@@ -3,142 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jackie Skills — 一键安装推荐清单</title>
+  <title>Jackie Skills</title>
   <style>
-    :root {
-      --bg: #ffffff;
-      --text: #0f172a;
-      --muted: #64748b;
-      --line: #e2e8f0;
-      --card: #f8fafc;
-      --brand: #2563eb;
-      --brand-weak: #eff6ff;
-      --ok: #16a34a;
-    }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif; background: var(--bg); color: var(--text); }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 16px 56px; }
-    h1 { margin: 0 0 10px; font-size: clamp(28px, 4vw, 42px); letter-spacing: -0.02em; }
-    .sub { margin: 0 0 18px; color: var(--muted); }
-    .cmd {
-      display: flex; gap: 8px; align-items: center;
-      border: 1px solid var(--line); border-radius: 12px; background: var(--card);
-      padding: 10px; overflow: auto;
-    }
-    code { white-space: nowrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: #0b3aa8; font-size: 13px; }
-    button {
-      border: 1px solid var(--line); background: white; color: var(--text); border-radius: 10px;
-      padding: 8px 10px; cursor: pointer; font-weight: 600;
-    }
-    button.primary { background: var(--brand); color: #fff; border-color: var(--brand); }
-    .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 22px 0 12px; }
-    .tab { padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line); background: #fff; cursor: pointer; }
-    .tab.active { background: var(--brand-weak); border-color: #bfdbfe; color: #1d4ed8; }
-    .panel { border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
-    .panel h2 { margin: 0 0 10px; font-size: 18px; }
-    .meta { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
-    table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    th, td { border-top: 1px solid var(--line); text-align: left; padding: 10px 6px; vertical-align: top; }
-    th { color: var(--muted); font-weight: 600; }
-    .maintain { margin-top: 20px; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 12px; background: #fcfdff; }
-    .ok { color: var(--ok); font-weight: 700; }
-    @media (max-width: 760px){ th:nth-child(3), td:nth-child(3){ display: none; } }
+    :root{--bg:#fff;--text:#0f172a;--muted:#64748b;--line:#e2e8f0;--brand:#2563eb;--chip:#eff6ff}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1080px;margin:0 auto;padding:24px 16px 56px}
+    h1{margin:0 0 8px;font-size:clamp(28px,4vw,40px)} .sub{margin:0 0 16px;color:var(--muted)}
+    .row{display:flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px;background:#f8fafc;overflow:auto}
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#1e3a8a;font-size:13px;white-space:nowrap}
+    button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;cursor:pointer;font-weight:600}
+    .primary{background:var(--brand);border-color:var(--brand);color:#fff}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 12px}.tab{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;cursor:pointer}
+    .tab.active{background:var(--chip);border-color:#bfdbfe;color:#1d4ed8}
+    .panel{border:1px solid var(--line);border-radius:14px;padding:14px}
+    .meta{font-size:13px;color:var(--muted);margin:8px 0 10px}
+    table{width:100%;border-collapse:collapse;font-size:14px}th,td{border-top:1px solid var(--line);text-align:left;padding:9px 6px;vertical-align:top}th{color:var(--muted);font-weight:600}
+    .maintain{margin-top:16px;border:1px dashed #cbd5e1;border-radius:12px;padding:12px;background:#fcfdff}
+    .toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:8px 12px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.2s}
+    .toast.show{opacity:1}
+    @media(max-width:760px){th:nth-child(3),td:nth-child(3){display:none}}
   </style>
 </head>
 <body>
+  <div id="toast" class="toast">复制成功</div>
   <main class="wrap">
     <h1>Jackie 推荐 Skills</h1>
-    <p class="sub">超简洁懒人版：复制命令 → 回车执行 → 直接可用。</p>
+    <p class="sub">一行命令安装全部推荐，复制即用。</p>
 
-    <div class="cmd">
-      <code id="allCmd">npx skills add Jackiexiao/jackie-skills-dev --all && npx skills add Jackiexiao/jackie-skills-marketing --all && npx skills add Jackiexiao/jackie-skills-creator --all && npx skills add Jackiexiao/jackie-skills-everyday --all</code>
-      <button class="primary" onclick="copy('allCmd')">一键复制全部安装</button>
+    <div class="row">
+      <code id="allCmd">npx skills add Jackiexiao/jackie-skills-starter --all</code>
+      <button class="primary" onclick="copy('allCmd')">复制</button>
     </div>
-    <p class="sub" style="margin-top:8px">适用于 Claude Code / Codex / Trae / OpenClaw 等。共 <span class="ok">60</span> 个推荐 skill。</p>
 
     <div class="tabs" id="tabs"></div>
+
     <section class="panel">
-      <h2 id="panelTitle"></h2>
-      <div class="cmd" style="margin-bottom:10px">
+      <h3 id="title" style="margin:0"></h3>
+      <div class="row" style="margin-top:10px">
         <code id="catCmd"></code>
-        <button onclick="copy('catCmd')">复制本领域安装命令</button>
+        <button onclick="copy('catCmd')">复制</button>
       </div>
-      <div class="meta" id="panelMeta"></div>
+      <div class="meta" id="meta"></div>
       <table>
-        <thead><tr><th>Skill</th><th>一句话用法</th><th>示例</th></tr></thead>
+        <thead><tr><th>Skill</th><th>用途</th><th>示例</th></tr></thead>
         <tbody id="tbody"></tbody>
       </table>
     </section>
 
     <section class="maintain">
-      <strong>后续维护</strong>
-      <div class="cmd" style="margin-top:8px; margin-bottom:8px">
-        <code id="lsCmd">npx skills ls</code>
-        <button onclick="copy('lsCmd')">复制查看已安装</button>
+      <div style="margin-bottom:8px;font-weight:600">后续维护</div>
+      <div class="row" style="margin-bottom:8px">
+        <code id="lsCmd">npx skills ls</code><button onclick="copy('lsCmd')">复制</button>
       </div>
-      <div class="cmd">
-        <code id="rmCmd">npx skills remove &lt;skill-name&gt;</code>
-        <button onclick="copy('rmCmd')">复制删除命令</button>
+      <div class="row">
+        <code id="rmCmd">npx skills remove &lt;skill-name&gt;</code><button onclick="copy('rmCmd')">复制</button>
       </div>
     </section>
   </main>
-
 <script>
-const categories = {
-  Dev: {
-    label: 'Dev（开发）',
-    cmd: 'npx skills add Jackiexiao/jackie-skills-dev --all',
-    items: [
-      ['frontend-design','高质量前端页面','做 SaaS 定价页'],['vercel-react-best-practices','React 性能优化','减少重复渲染'],['next-best-practices','Next.js 最佳实践','优化 Server/Client 边界'],['vercel-composition-patterns','组件组合模式','拆分大组件'],['supabase-postgres-best-practices','DB 查询优化','为慢查询建索引'],['systematic-debugging','系统化排查 bug','定位偶发 500'],['test-driven-development','先测后写','先写失败测试'],['webapp-testing','自动化测试','跑注册到支付流程'],['requesting-code-review','发起高质量评审','输出 PR 风险点'],['receiving-code-review','处理评审意见','判断建议是否采纳'],['verification-before-completion','完成前验证','上线前核对清单'],['using-git-worktrees','并行开发隔离','创建独立 worktree'],['subagent-driven-development','多 agent 协作','拆分复杂任务'],['mcp-builder','接入外部 API','封装 MCP 工具'],['react-doctor','React 诊断','排查卡顿原因'],['agent-tools','常用工具集合','提升日常效率']
-    ]
-  },
-  Marketing: {
-    label: 'Marketing（营销）',
-    cmd: 'npx skills add Jackiexiao/jackie-skills-marketing --all',
-    items: [
-      ['audit-website','网站体检','输出 TOP10 修复项'],['seo-audit','SEO 诊断','分析不排名原因'],['programmatic-seo','规模化 SEO','设计批量模板'],['copywriting','转化文案','重写首屏与 CTA'],['copy-editing','文案润色','缩短并增强行动感'],['content-strategy','内容规划','30 天内容日历'],['marketing-ideas','增长点子','低预算动作清单'],['marketing-psychology','心理学转化','优化价格页'],['product-marketing-context','定位梳理','统一人群与卖点'],['pricing-strategy','定价策略','设计三档套餐'],['page-cro','转化优化','给 5 个 A/B 方案'],['launch-strategy','发布计划','14 天上线节奏'],['analytics-tracking','埋点漏斗','注册到付费追踪'],['schema-markup','结构化数据','生成 JSON-LD'],['reflection','复盘迭代','总结并提下轮动作']
-    ]
-  },
-  Creator: {
-    label: 'Creator（创作）',
-    cmd: 'npx skills add Jackiexiao/jackie-skills-creator --all',
-    items: [
-      ['social-content','多平台内容','同题多版本'],['copywriting','标题与开头优化','写 10 个标题'],['copy-editing','润色提质','口播稿优化'],['canvas-design','海报封面','快速出封面'],['remotion-best-practices','视频脚本动画','60 秒分镜'],['ui-ux-pro-max','视觉交互升级','优化主页层次'],['algorithmic-art','创意视觉生成','统一背景图'],['web-design-guidelines','网页设计规范','去 AI 廉价感'],['tailwind-design-system','设计系统','统一组件规范'],['baoyu-cover-image','中文封面图','公众号封面'],['baoyu-comic','漫画配图','观点漫画化'],['baoyu-infographic','信息图制作','数据可视化'],['ai-image-generation','通用 AI 配图','产品配图生成']
-    ]
-  },
-  Everyday: {
-    label: 'Everyday（日常效率）',
-    cmd: 'npx skills add Jackiexiao/jackie-skills-everyday --all',
-    items: [
-      ['pdf','PDF 全流程','合并/拆分/OCR'],['docx','Word 处理','纪要转周报'],['xlsx','表格分析','汇总并画图'],['pptx','PPT 生成','快速做汇报'],['agent-browser','网页自动化','登录抓取列表'],['browser-use','流程执行','自动填表截图'],['writing-plans','任务拆解','给执行计划'],['brainstorming','创意发散','想法清单'],['find-skills','按需找技能','检索合适技能'],['using-superpowers','流程提效','分析→执行→验证'],['executing-plans','计划落地','拆成今日步骤'],['skill-creator','封装经验','做自己的 skill'],['baoyu-url-to-markdown','网页转 MD','提取正文'],['baoyu-markdown-to-html','MD 转 HTML','发布页面'],['baoyu-format-markdown','Markdown 排版','统一格式'],['just-scrape','网页抓取','抓正文和链接']
-    ]
-  }
+const data={
+ Dev:['npx skills add Jackiexiao/jackie-skills-dev --all',["frontend-design","vercel-react-best-practices","next-best-practices","vercel-composition-patterns","supabase-postgres-best-practices","systematic-debugging","test-driven-development","webapp-testing","requesting-code-review","receiving-code-review","verification-before-completion","using-git-worktrees","subagent-driven-development","mcp-builder","react-doctor","agent-tools"]],
+ Marketing:['npx skills add Jackiexiao/jackie-skills-marketing --all',["audit-website","seo-audit","programmatic-seo","copywriting","copy-editing","content-strategy","marketing-ideas","marketing-psychology","product-marketing-context","pricing-strategy","page-cro","launch-strategy","analytics-tracking","schema-markup","reflection"]],
+ Creator:['npx skills add Jackiexiao/jackie-skills-creator --all',["social-content","copywriting","copy-editing","canvas-design","remotion-best-practices","ui-ux-pro-max","algorithmic-art","web-design-guidelines","tailwind-design-system","baoyu-cover-image","baoyu-comic","baoyu-infographic","ai-image-generation"]],
+ Everyday:['npx skills add Jackiexiao/jackie-skills-everyday --all',["pdf","docx","xlsx","pptx","agent-browser","browser-use","writing-plans","brainstorming","find-skills","using-superpowers","executing-plans","skill-creator","baoyu-url-to-markdown","baoyu-markdown-to-html","baoyu-format-markdown","just-scrape"]]
 };
-
-const order = ['Dev','Marketing','Creator','Everyday'];
+const labels={Dev:'Dev（开发）',Marketing:'Marketing（营销）',Creator:'Creator（创作）',Everyday:'Everyday（日常）'};
 let active='Dev';
-const tabs = document.getElementById('tabs');
-const panelTitle = document.getElementById('panelTitle');
-const panelMeta = document.getElementById('panelMeta');
-const catCmd = document.getElementById('catCmd');
-const tbody = document.getElementById('tbody');
-
-function renderTabs(){
-  tabs.innerHTML = order.map(k=>`<button class="tab ${k===active?'active':''}" onclick="setActive('${k}')">${categories[k].label}</button>`).join('');
-}
-function renderPanel(){
-  const c = categories[active];
-  panelTitle.textContent = c.label;
-  panelMeta.textContent = `本领域共 ${c.items.length} 个 skill`;
-  catCmd.textContent = c.cmd;
-  tbody.innerHTML = c.items.map(i=>`<tr><td><code>${i[0]}</code></td><td>${i[1]}</td><td>${i[2]}</td></tr>`).join('');
-}
-function setActive(k){ active=k; renderTabs(); renderPanel(); }
-async function copy(id){
-  const text = document.getElementById(id).textContent;
-  try { await navigator.clipboard.writeText(text); } catch { window.prompt('复制以下命令', text); }
-}
-renderTabs(); renderPanel();
+function desc(skill){return `用 ${skill} 处理对应任务`;}
+function sample(skill){return `用 ${skill} 帮我完成当前任务，给可直接执行结果`;}
+function renderTabs(){document.getElementById('tabs').innerHTML=Object.keys(data).map(k=>`<button class="tab ${k===active?'active':''}" onclick="setTab('${k}')">${labels[k]}</button>`).join('')}
+function render(){const [cmd,items]=data[active];title.textContent=labels[active];catCmd.textContent=cmd;meta.textContent=`本领域共 ${items.length} 个 skills`;tbody.innerHTML=items.map(s=>`<tr><td><code>${s}</code></td><td>${desc(s)}</td><td>${sample(s)}</td></tr>`).join('')}
+function setTab(k){active=k;renderTabs();render()}
+async function copy(id){const t=document.getElementById(id).textContent;try{await navigator.clipboard.writeText(t)}catch{window.prompt('复制命令',t)}const el=document.getElementById('toast');el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1200)}
+renderTabs();render();
 </script>
 </body>
 </html>

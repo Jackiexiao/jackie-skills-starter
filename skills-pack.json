@@ -1,0 +1,222 @@
+[
+  {
+    "skill": "agent-browser",
+    "path": "skills/agent-browser"
+  },
+  {
+    "skill": "agent-tools",
+    "path": "skills/agent-tools"
+  },
+  {
+    "skill": "ai-image-generation",
+    "path": "skills/ai-image-generation"
+  },
+  {
+    "skill": "algorithmic-art",
+    "path": "skills/algorithmic-art"
+  },
+  {
+    "skill": "analytics-tracking",
+    "path": "skills/analytics-tracking"
+  },
+  {
+    "skill": "baoyu-comic",
+    "path": "skills/baoyu-comic"
+  },
+  {
+    "skill": "baoyu-cover-image",
+    "path": "skills/baoyu-cover-image"
+  },
+  {
+    "skill": "baoyu-format-markdown",
+    "path": "skills/baoyu-format-markdown"
+  },
+  {
+    "skill": "baoyu-infographic",
+    "path": "skills/baoyu-infographic"
+  },
+  {
+    "skill": "baoyu-markdown-to-html",
+    "path": "skills/baoyu-markdown-to-html"
+  },
+  {
+    "skill": "baoyu-url-to-markdown",
+    "path": "skills/baoyu-url-to-markdown"
+  },
+  {
+    "skill": "brainstorming",
+    "path": "skills/brainstorming"
+  },
+  {
+    "skill": "browser-use",
+    "path": "skills/browser-use"
+  },
+  {
+    "skill": "canvas-design",
+    "path": "skills/canvas-design"
+  },
+  {
+    "skill": "content-strategy",
+    "path": "skills/content-strategy"
+  },
+  {
+    "skill": "copy-editing",
+    "path": "skills/copy-editing"
+  },
+  {
+    "skill": "copywriting",
+    "path": "skills/copywriting"
+  },
+  {
+    "skill": "docx",
+    "path": "skills/docx"
+  },
+  {
+    "skill": "find-skills",
+    "path": "skills/find-skills"
+  },
+  {
+    "skill": "frontend-design",
+    "path": "skills/frontend-design"
+  },
+  {
+    "skill": "just-scrape",
+    "path": "skills/just-scrape"
+  },
+  {
+    "skill": "launch-strategy",
+    "path": "skills/launch-strategy"
+  },
+  {
+    "skill": "marketing-ideas",
+    "path": "skills/marketing-ideas"
+  },
+  {
+    "skill": "marketing-psychology",
+    "path": "skills/marketing-psychology"
+  },
+  {
+    "skill": "mcp-builder",
+    "path": "skills/mcp-builder"
+  },
+  {
+    "skill": "next-best-practices",
+    "path": "skills/next-best-practices"
+  },
+  {
+    "skill": "page-cro",
+    "path": "skills/page-cro"
+  },
+  {
+    "skill": "pdf",
+    "path": "skills/pdf"
+  },
+  {
+    "skill": "pptx",
+    "path": "skills/pptx"
+  },
+  {
+    "skill": "pricing-strategy",
+    "path": "skills/pricing-strategy"
+  },
+  {
+    "skill": "product-marketing-context",
+    "path": "skills/product-marketing-context"
+  },
+  {
+    "skill": "programmatic-seo",
+    "path": "skills/programmatic-seo"
+  },
+  {
+    "skill": "react-doctor",
+    "path": "skills/react-doctor"
+  },
+  {
+    "skill": "receiving-code-review",
+    "path": "skills/receiving-code-review"
+  },
+  {
+    "skill": "reflection",
+    "path": "skills/reflection"
+  },
+  {
+    "skill": "remotion-best-practices",
+    "path": "skills/remotion-best-practices"
+  },
+  {
+    "skill": "requesting-code-review",
+    "path": "skills/requesting-code-review"
+  },
+  {
+    "skill": "schema-markup",
+    "path": "skills/schema-markup"
+  },
+  {
+    "skill": "seo-audit",
+    "path": "skills/seo-audit"
+  },
+  {
+    "skill": "social-content",
+    "path": "skills/social-content"
+  },
+  {
+    "skill": "subagent-driven-development",
+    "path": "skills/subagent-driven-development"
+  },
+  {
+    "skill": "supabase-postgres-best-practices",
+    "path": "skills/supabase-postgres-best-practices"
+  },
+  {
+    "skill": "systematic-debugging",
+    "path": "skills/systematic-debugging"
+  },
+  {
+    "skill": "tailwind-design-system",
+    "path": "skills/tailwind-design-system"
+  },
+  {
+    "skill": "test-driven-development",
+    "path": "skills/test-driven-development"
+  },
+  {
+    "skill": "ui-ux-pro-max",
+    "path": "skills/ui-ux-pro-max"
+  },
+  {
+    "skill": "using-git-worktrees",
+    "path": "skills/using-git-worktrees"
+  },
+  {
+    "skill": "using-superpowers",
+    "path": "skills/using-superpowers"
+  },
+  {
+    "skill": "vercel-composition-patterns",
+    "path": "skills/vercel-composition-patterns"
+  },
+  {
+    "skill": "vercel-react-best-practices",
+    "path": "skills/vercel-react-best-practices"
+  },
+  {
+    "skill": "verification-before-completion",
+    "path": "skills/verification-before-completion"
+  },
+  {
+    "skill": "web-design-guidelines",
+    "path": "skills/web-design-guidelines"
+  },
+  {
+    "skill": "webapp-testing",
+    "path": "skills/webapp-testing"
+  },
+  {
+    "skill": "writing-plans",
+    "path": "skills/writing-plans"
+  },
+  {
+    "skill": "xlsx",
+    "path": "skills/xlsx"
+  }
+]
