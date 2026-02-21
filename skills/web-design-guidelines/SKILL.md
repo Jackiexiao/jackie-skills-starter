@@ -1,6 +1,6 @@
 ---
 name: web-design-guidelines
-description: 查看用户界面代码以了解Web界面指南合规性。在被要求“查看我的用户界面”、“检查辅助功能”、“审核设计”、“查看用户体验”或“根据最佳做法检查我的网站”时使用。
+description: "Review UI code for web interface guideline compliance, accessibility, and UX best practices."
 metadata:
   author: vercel
   version: "1.0.0"

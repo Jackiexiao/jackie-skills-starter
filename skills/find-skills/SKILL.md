@@ -1,6 +1,6 @@
 ---
 name: find-skills
-description: 当用户提出诸如“我如何做X”、“为X找到技能”、“是否有可以……的技能”或表示有兴趣扩展功能等问题时，帮助他们发现并安装代理技能。当用户正在寻找可能作为可安装技能存在的功能时，应使用此技能。
+description: "Help users discover and install agent skills when they ask how to do something or look for capabilities that may exist as installable skills."
 ---
 
 # 查找技能

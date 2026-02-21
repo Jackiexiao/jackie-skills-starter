@@ -1,6 +1,6 @@
 ---
 name: test-driven-development
-description: （中文）Use when implementing any feature or bugfix, before writing implementation code
+description: "Use before implementation for features/bugfixes: write tests first."
 ---
 
 # （中文）Test-Driven Development (TDD)

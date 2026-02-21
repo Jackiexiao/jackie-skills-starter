@@ -1,6 +1,6 @@
 ---
 name: writing-plans
-description: （中文）Use when you have a spec or requirements for a multi-step task, before touching code
+description: "Use before coding when you have specs for a multi-step task; produce an implementation plan."
 ---
 
 # （中文）Writing Plans

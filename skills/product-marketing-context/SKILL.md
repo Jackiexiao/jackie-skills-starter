@@ -1,6 +1,6 @@
 ---
 name: product-marketing-context
-description: "（中文）When the user wants to create or update their product marketing context document. Also use when the user mentions 'product context,' 'marketing context,' 'set up context,' 'positioning,' or wants to avoid repeating foundational information across marketing tasks. Creates `.claude/product-marketing-context.md` that other marketing skills reference."
+description: "Create/update a reusable product marketing context document to align positioning and messaging."
 metadata:
   version: 1.0.0
 ---

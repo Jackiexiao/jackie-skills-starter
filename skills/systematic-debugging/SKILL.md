@@ -1,6 +1,6 @@
 ---
 name: systematic-debugging
-description: （中文）Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes
+description: "Use before proposing fixes when facing bugs, test failures, or unexpected behavior."
 ---
 
 # （中文）Systematic Debugging

@@ -1,6 +1,6 @@
 ---
 name: analytics-tracking
-description: （中文）When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions "set up tracking," "GA4," "Google Analytics," "conversion tracking," "event tracking," "UTM parameters," "tag manager," "GTM," "analytics implementation," or "tracking plan." For A/B test measurement, see ab-test-setup.
+description: "Use when setting up, improving, or auditing analytics tracking (GA4, GTM, conversion/event tracking, UTM, measurement plans)."
 metadata:
   version: 1.0.0
 ---

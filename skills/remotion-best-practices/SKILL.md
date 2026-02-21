@@ -1,6 +1,6 @@
 ---
 name: remotion-best-practices
-description: Remotion的最佳实践-在React中创建视频
+description: "Remotion best practices for creating videos in React."
 metadata:
   tags: remotion, video, react, animation, composition
 ---
