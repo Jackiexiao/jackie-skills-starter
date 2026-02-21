@@ -74,26 +74,76 @@ const data={
  Everyday:['npx skills add Jackiexiao/jackie-skills-everyday --all',["pdf","docx","xlsx","pptx","agent-browser","browser-use","writing-plans","brainstorming","find-skills","using-superpowers","executing-plans","skill-creator","baoyu-url-to-markdown","baoyu-markdown-to-html","baoyu-format-markdown","just-scrape"]]
 };
 const labels={Dev:'Dev（开发）',Marketing:'Marketing（营销）',Creator:'Creator（创作）',Everyday:'Everyday（日常）'};
-let active='Dev';
-let descriptions={};
+const info={
+  "audit-website":["网站体检（SEO/性能/可用性）","审计官网并按优先级给 Top10 修复项"],
+  "seo-audit":["SEO 问题诊断","分析页面不排名原因并给改法"],
+  "programmatic-seo":["规模化 SEO 页面策略","设计‘城市+行业’模板与生成规则"],
+  "copywriting":["转化文案撰写","重写首屏标题、卖点和 CTA"],
+  "copy-editing":["文案润色与降噪","把文案改得更短、更清楚、更能转化"],
+  "content-strategy":["内容选题与节奏规划","生成 30 天内容日历"],
+  "marketing-ideas":["快速出增长点子","给 20 个低预算增长动作"],
+  "marketing-psychology":["心理学驱动转化优化","优化价格页的心理触发点"],
+  "product-marketing-context":["统一产品定位与卖点","梳理人群/痛点/差异化"],
+  "pricing-strategy":["定价与套餐设计","设计三档套餐并解释逻辑"],
+  "page-cro":["页面转化优化","给 5 个可 A/B 测试改动"],
+  "launch-strategy":["发布计划与节奏","做 14 天上线执行计划"],
+  "analytics-tracking":["埋点与漏斗追踪设计","搭建注册→付费漏斗事件"],
+  "schema-markup":["结构化数据增强","生成 JSON-LD 并补齐关键字段"],
+  "reflection":["复盘总结与迭代","复盘本周动作并提下周重点"],
 
+  "frontend-design":["高质量前端页面生成","做一个 SaaS 定价页（移动端优先）"],
+  "vercel-react-best-practices":["React 性能最佳实践","减少重复渲染并优化交互"],
+  "next-best-practices":["Next.js 结构与渲染优化","优化 Server/Client 边界"],
+  "vercel-composition-patterns":["组件组合模式重构","把大组件拆成 compound components"],
+  "supabase-postgres-best-practices":["数据库索引与查询优化","为慢 SQL 设计索引"],
+  "systematic-debugging":["系统化定位 bug 根因","排查偶发 500 的真正原因"],
+  "test-driven-development":["先测后写，降低回归风险","先写失败测试再实现功能"],
+  "webapp-testing":["自动化测试网页流程","测试注册→登录→支付链路"],
+  "requesting-code-review":["高质量发起代码评审","整理 PR 重点与风险点"],
+  "receiving-code-review":["评审意见判断与落地","判断哪些建议该改"],
+  "verification-before-completion":["完成前证据化验证","输出上线前核对清单"],
+  "using-git-worktrees":["并行开发隔离","为 bug 建独立 worktree"],
+  "subagent-driven-development":["复杂任务并行拆分","拆分支付系统重构子任务"],
+  "mcp-builder":["MCP 工具接入外部 API","把 CRM 接口封装成 MCP"],
+  "react-doctor":["React 项目诊断","定位卡顿组件并给修复建议"],
+  "agent-tools":["常用 Agent 工具集合","加速日常开发动作"],
+
+  "social-content":["多平台内容改写","同题输出小红书/X/公众号版本"],
+  "canvas-design":["海报与封面图生成","做一张活动封面图"],
+  "remotion-best-practices":["视频脚本与动画结构","设计 60 秒产品分镜"],
+  "ui-ux-pro-max":["UI/UX 质感升级","优化页面层次与可读性"],
+  "algorithmic-art":["算法创意视觉生成","生成统一风格背景图"],
+  "web-design-guidelines":["网页设计规范化","修掉页面‘廉价 AI 感’"],
+  "tailwind-design-system":["Tailwind 设计系统搭建","统一按钮/卡片/表单规范"],
+  "baoyu-cover-image":["中文内容封面图生成","为公众号文章生成封面"],
+  "baoyu-comic":["漫画风格配图","把观点做成漫画图"],
+  "baoyu-infographic":["信息图可视化","把数据摘要转信息图"],
+  "ai-image-generation":["通用 AI 配图生成","生成产品介绍配图"],
+
+  "pdf":["PDF 提取/合并/拆分/OCR","把 3 个 PDF 合并并提取目录"],
+  "docx":["Word 文档生成与整理","把会议纪要整理成周报"],
+  "xlsx":["Excel 清洗与汇总","按地区汇总并画图"],
+  "pptx":["快速生成演示文稿","把方案整理成 10 页 PPT"],
+  "agent-browser":["浏览器自动化操作","登录网站后抓取订单列表"],
+  "browser-use":["网页流程自动执行","自动填表并截图留档"],
+  "writing-plans":["多步骤任务拆解","把任务拆成可执行清单"],
+  "brainstorming":["创意发散","给 30 个选题方向"],
+  "find-skills":["按需求搜索技能","我想做播客剪辑该装啥"],
+  "using-superpowers":["固定高效工作流","建立分析→执行→验证流程"],
+  "executing-plans":["按计划推进","把方案拆成今天前 5 步"],
+  "skill-creator":["把经验封装成 skill","把日报流程做成可复用 skill"],
+  "baoyu-url-to-markdown":["网页转 Markdown","提取网页正文为 MD"],
+  "baoyu-markdown-to-html":["Markdown 转 HTML","把 MD 转发布页 HTML"],
+  "baoyu-format-markdown":["Markdown 排版整理","统一标题/列表/引用格式"],
+  "just-scrape":["网页抓取","抓取页面正文与链接"]
+};
+let active='Dev';
+function detail(skill){return info[skill] || ['快速处理对应任务','让 AI 用该 skill 直接完成任务'];}
 function renderTabs(){document.getElementById('tabs').innerHTML=Object.keys(data).map(k=>`<button class="tab ${k===active?'active':''}" onclick="setTab('${k}')">${labels[k]}</button>`).join('')}
-function example(skill){return `Use ${skill} for my current task and give an executable result.`}
-function render(){
-  const [cmd,items]=data[active];
-  title.textContent=labels[active];
-  catCmd.textContent=cmd;
-  meta.textContent=`本领域共 ${items.length} 个 skills`;
-  tbody.innerHTML=items.map(s=>`<tr><td><code>${s}</code></td><td>${descriptions[s]||'No description provided.'}</td><td>${example(s)}</td></tr>`).join('');
-}
+function render(){const [cmd,items]=data[active];title.textContent=labels[active];catCmd.textContent=cmd;meta.textContent=`本领域共 ${items.length} 个 skills`;tbody.innerHTML=items.map(s=>{const [d,e]=detail(s);return `<tr><td><code>${s}</code></td><td>${d}</td><td>${e}</td></tr>`}).join('')}
 function setTab(k){active=k;renderTabs();render()}
 async function copy(id){const t=document.getElementById(id).textContent;try{await navigator.clipboard.writeText(t)}catch{window.prompt('复制命令',t)}const el=document.getElementById('toast');el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1200)}
-
-(async function init(){
-  try { descriptions = await fetch('./skills-meta.json').then(r=>r.json()); } catch {}
-  renderTabs();
-  render();
-})();
+renderTabs();render();
 </script>
 </body>
 </html>
